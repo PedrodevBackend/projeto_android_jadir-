@@ -97,7 +97,7 @@ Leia o [CONTRIBUTING.md](CONTRIBUTING.md): ele explica como clonar, criar uma br
 
 ## Equipe
 
-- Gustavo Mota de Paula
+- Gustavo Mota de Paula RGM: 43447368
 - Pedro Henrique Sales Siquele RGM 43001696
 - Higor Vinícius Garcia - RGM: 42948525
 - Rodrigo Franco Navero Martins RGM: 43049184
