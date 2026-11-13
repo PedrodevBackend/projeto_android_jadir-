@@ -1,0 +1,16 @@
+{
+  "name": "esgotozero-android",
+  "version": "2.1.0",
+  "private": true,
+  "description": "App Android do EsgotoZero (Capacitor). Os arquivos do site vêm da pasta acima.",
+  "scripts": {
+    "www": "node copiar-site.mjs",
+    "sync": "node copiar-site.mjs && npx cap sync android",
+    "abrir": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/core": "^8.6.2"
+  }
+}

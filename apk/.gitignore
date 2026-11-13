@@ -1,0 +1,3 @@
+# gerados: rode "npm install" e "npm run sync" para recriar
+node_modules/
+www/

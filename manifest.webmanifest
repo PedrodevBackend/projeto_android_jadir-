@@ -1,0 +1,25 @@
+{
+  "id": "./",
+  "name": "EsgotoZero · Mapa de ocorrências",
+  "short_name": "EsgotoZero",
+  "description": "Registre e acompanhe sinais de esgoto e poluição em rios, canais, lagoas e praias de todo o Brasil.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./#mapa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#eef3f6",
+  "theme_color": "#0b5e7e",
+  "categories": ["utilities", "education", "government"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Registrar ocorrência", "short_name": "Registrar", "url": "./#registrar", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Meus relatos", "short_name": "Meus relatos", "url": "./#meus-relatos", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

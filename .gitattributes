@@ -1,0 +1,9 @@
+# Normaliza quebras de linha (Windows/Mac/Linux) e marca binários
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.jpg binary
+*.png binary
+*.woff2 binary
+*.jar binary
+*.jks binary

@@ -1,0 +1,15 @@
+{
+  "appId": "br.com.esgotozero.app",
+  "appName": "EsgotoZero",
+  "webDir": "www",
+  "backgroundColor": "#eef3f6",
+  "android": {
+    "backgroundColor": "#eef3f6"
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "native",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

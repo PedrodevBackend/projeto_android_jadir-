@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EsgotoZero · Mapa de ocorrências</title>
+  <meta name="description" content="EsgotoZero: a comunidade registra sinais de esgoto e poluição em rios, canais, lagoas e praias de todo o Brasil e acompanha cada relato. Projeto acadêmico ligado ao ODS 6.">
+  <meta name="theme-color" content="#0b5e7e">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="EsgotoZero · Da observação ao acompanhamento">
+  <meta property="og:description" content="Mapa colaborativo de ocorrências de esgoto e poluição da água em todo o Brasil. Projeto acadêmico ligado ao ODS 6.">
+  <meta property="og:image" content="https://comforting-kheer-a0c28d.netlify.app/assets/og-esgotozero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* aplica o tema antes de desenhar a página (evita "piscar" em branco no modo escuro) */
+    (function () { try { var p = JSON.parse(localStorage.getItem('esgotozero.prefs.v2') || '{}'); var t = p.theme || 'system'; var d = t === 'dark' || (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches); document.documentElement.dataset.theme = d ? 'dark' : 'light'; if (p.sidebar === 'collapsed') document.documentElement.classList.add('pre-collapsed'); } catch (e) { } })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Ir para o conteúdo</a>
+  <noscript><p class="noscript">O EsgotoZero precisa do JavaScript ativado no navegador para funcionar.</p></noscript>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="ez-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1cc6e4"/><stop offset="1" stop-color="#0a5372"/></linearGradient>
+      <symbol id="ez-mark" viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="url(#ez-grad)"/><path d="M20 6.8c-4.6 6-9.6 11.2-9.6 17a9.6 9.6 0 0 0 19.2 0c0-5.8-5-11-9.6-17Z" fill="#fff"/><path d="M13.6 24.4c2.1 1.8 4.3 1.8 6.4 0s4.3-1.8 6.4 0" fill="none" stroke="#0b5e7e" stroke-width="2.3" stroke-linecap="round"/><circle cx="23.6" cy="17.6" r="1.7" fill="#19b3d1"/></symbol>
+    </defs>
+  </svg>
+
+  <aside class="sidebar" aria-label="Navegação principal">
+    <div class="sb-top">
+      <a class="brand" href="#mapa" aria-label="EsgotoZero, início"><svg class="brand-mark" aria-hidden="true"><use href="#ez-mark"/></svg><span class="brand-name"><b>Esgoto<span>Zero</span></b><small>Água limpa. Futuro possível.</small></span></a>
+      <button type="button" class="icon-btn sb-toggle" data-action="sidebar-toggle" aria-label="Recolher o menu" data-tip="Recolher menu"><span data-icon="PanelLeft"></span></button>
+    </div>
+    <button type="button" class="btn btn-primary sb-cta" data-action="register" aria-label="Registrar ocorrência"><span data-icon="Plus"></span><span>Registrar ocorrência</span></button>
+    <nav class="sb-nav">
+      <p class="sb-label">Explorar</p>
+      <a href="#mapa" data-nav="mapa" data-tip-side><span data-icon="Map"></span><span>Mapa de ocorrências</span></a>
+      <a href="#ocorrencias" data-nav="ocorrencias"><span data-icon="List"></span><span>Todas as ocorrências</span></a>
+      <a href="#ods" data-nav="ods"><span data-icon="Target"></span><span>ODS 6 no Brasil</span></a>
+      <p class="sb-label">Participar</p>
+      <a href="#meus-relatos" data-nav="meus-relatos"><span data-icon="FileText"></span><span>Meus relatos</span><em data-count="mine" hidden></em></a>
+      <p class="sb-label mgr-only" hidden>Equipe</p>
+      <a href="#gestao" data-nav="gestao" class="mgr-only" hidden><span data-icon="LayoutDashboard"></span><span>Painel de gestão</span><em class="em-alert" data-count="pending" hidden></em></a>
+    </nav>
+    <div class="sb-bottom">
+      <a class="sb-fact" href="#ods"><span class="ods-tag">ODS 6</span><span class="fact-k">~90 milhões</span><p>de brasileiros ainda vivem sem coleta de esgoto (SINISA 2024).</p><span class="link-like"><span data-icon="ArrowUpRight"></span>Entenda o ODS 6</span></a>
+      <div class="sb-role"><p>Ver a demonstração como</p><div class="seg" role="radiogroup" aria-label="Perfil de demonstração"><button type="button" role="radio" data-role-seg="citizen" aria-checked="true"><span data-icon="User"></span>Cidadão</button><button type="button" role="radio" data-role-seg="manager" aria-checked="false"><span data-icon="ShieldCheck"></span>Gestor</button></div></div>
+      <p class="sb-foot">Projeto acadêmico · dados fictícios</p>
+    </div>
+  </aside>
+
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand brand-mobile" href="#mapa" aria-label="EsgotoZero, início"><svg class="brand-mark" aria-hidden="true"><use href="#ez-mark"/></svg><span class="brand-name"><b>Esgoto<span>Zero</span></b></span></a>
+      <button type="button" class="search-trigger" data-action="palette" aria-label="Buscar (Ctrl+K)"><span data-icon="Search"></span><span>Buscar relato, cidade, rio ou protocolo</span><kbd>Ctrl K</kbd></button>
+      <div class="tb-actions">
+        <button type="button" class="icon-btn search-mobile" data-action="palette" aria-label="Buscar"><span data-icon="Search"></span></button>
+        <button type="button" class="icon-btn" data-action="theme" aria-label="Usar tema escuro"><span data-icon="Moon"></span></button>
+        <button type="button" class="icon-btn" data-action="notifications" aria-label="Notificações" aria-haspopup="dialog" aria-expanded="false"><span data-icon="Bell"></span><span class="badge-dot" data-unread hidden></span></button>
+        <button type="button" class="user-btn" data-action="profile" aria-haspopup="dialog" aria-expanded="false" aria-label="Seu perfil"><span class="avatar" data-avatar>GM</span><span class="user-txt"><b>Olá, <span data-username>Gustavo</span></b><small data-rolelabel>Cidadão · demonstração</small></span><span data-icon="ChevronDown"></span></button>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer">
+      <span><span data-icon="ShieldCheck"></span>Projeto acadêmico ligado ao ODS 6 · relatos fictícios para demonstração</span>
+      <span><button type="button" data-action="about-demo">Sobre a demonstração</button> · <a href="#ods">Fontes e créditos</a></span>
+    </footer>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Navegação">
+    <a href="#mapa" data-nav="mapa"><span data-icon="Map"></span>Mapa</a>
+    <a href="#ocorrencias" data-nav="ocorrencias" class="cit-only"><span data-icon="List"></span>Relatos</a>
+    <a href="#gestao" data-nav="gestao" class="mgr-only" hidden><span data-icon="LayoutDashboard"></span>Gestão<em data-count="pending" hidden></em></a>
+    <button type="button" class="bn-fab" data-action="register" aria-label="Registrar ocorrência"><span data-icon="Plus"></span></button>
+    <a href="#meus-relatos" data-nav="meus-relatos"><span data-icon="FileText"></span>Meus</a>
+    <a href="#ods" data-nav="ods"><span data-icon="Target"></span>ODS 6</a>
+  </nav>
+
+  <dialog id="dlg" class="dlg"></dialog>
+  <dialog id="drawer" class="drawer" aria-label="Ficha do relato"></dialog>
+  <dialog id="palette" class="palette" aria-label="Busca rápida"></dialog>
+  <div id="pop" class="pop" role="dialog" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="vendor/leaflet.markercluster.js"></script>
+  <script src="vendor/leaflet-heat.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/register.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

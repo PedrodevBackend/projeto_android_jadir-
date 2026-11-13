@@ -1,0 +1,24 @@
+# dependências e arquivos gerados
+node_modules/
+dist/
+.netlify/
+
+# sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# segredos: NUNCA suba chaves para o GitHub
+.env
+.env.*
+!.env.example
+
+# logs
+*.log
+
+# app Android: cópia do site e dependências (recriadas com "npm run sync" dentro de apk/)
+apk/www/
+apk/node_modules/
