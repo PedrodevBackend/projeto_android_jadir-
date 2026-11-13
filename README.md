@@ -103,6 +103,7 @@ Leia o [CONTRIBUTING.md](CONTRIBUTING.md): ele explica como clonar, criar uma br
 - Rodrigo Franco Navero Martins RGM: 43049184
 - Victor Ribeiro Gomes RGM: 42947979
 - Lucas Holanda dos santos lima RGM:48659282
+- Thiago Costa Meneguetti RGM: 43049401
 
 ## Créditos e licenças
 
