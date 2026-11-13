@@ -99,6 +99,10 @@ Leia o [CONTRIBUTING.md](CONTRIBUTING.md): ele explica como clonar, criar uma br
 
 - Gustavo Mota de Paula
 - Pedro Henrique Sales Siquele RGM 43001696
+- Higor Vinícius Garcia - RGM: 42948525
+- Rodrigo Franco Navero Martins RGM: 43049184
+- Victor Ribeiro Gomes RGM: 42947979
+- Lucas Holanda dos santos lima RGM:48659282
 
 ## Créditos e licenças
 
