@@ -98,7 +98,7 @@ Leia o [CONTRIBUTING.md](CONTRIBUTING.md): ele explica como clonar, criar uma br
 ## Equipe
 
 - Gustavo Mota de Paula
-- _(adicionem aqui os demais integrantes do grupo)_
+- Pedro Henrique Sales Siquele RGM 43001696
 
 ## Créditos e licenças
 
